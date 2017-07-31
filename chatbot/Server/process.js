@@ -27,7 +27,8 @@ var QA = {
 	      				/*case 1: Direct match */
 	      				source = response.hits.hits[0]['_source']
 	      				firstQuestion = source['question']
-	      				firstQuestion = firstQuestion.toLowerCase
+	      				firstQuestion = firstQuestion.toLowerCase();
+	      		
 	      				if(firstQuestion==userQuestion)
 	      				{
 	      					answers.push(source['answer'])
