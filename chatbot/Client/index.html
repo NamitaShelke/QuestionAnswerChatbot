@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="../jquery/jquery.min.js"></script>
+
+<script>
+
+
+
+$(document).ready(function(){
+	var from = $("#user").val()
+   $("#questionBox").keypress(function(e) {
+    if(e.which == 13)
+     {	
+     	alert("afsf")
+     	var question = $(this).val()
+     	alert(question)
+    	//send_question(from,question);	
+ 		$(this).val('')
+    }
+});
+});
+</script>
+</head>
+<body>
+<input type="hidden" id="user" value="namita"/>
+<textarea id="questionBox"></textarea>
+</body>

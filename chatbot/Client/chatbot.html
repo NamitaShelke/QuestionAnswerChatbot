@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <script src="/socket.io/socket.io.js"></script>
+<script>
+var socket =io()
+
+function query(e)
+{
+	if(e.which==13)
+	{
+		user = document.getElementById("user").value;
+		question=document.getElementById("questionBox").value
+		socket.emit('send_question',user,question)
+		document.getElementById("questionBox").value=""
+		document.getElementById("chatbox").value += "Question:"+question+"\n"+"\n"
+		
+	}
+
+}
+
+socket.on('send_answer', function(answer)
+{
+	answer = answer.replace(/[{}]/g, '');
+	document.getElementById("chatbox").value += answer+"\n"+"\n"
+
+	});
+	
+</script>
+</head>
+<body>
+<center>
+<h3> Question Answer ChatBot </h3>
+<div>
+<input type="hidden" id="user" value="namita"/>
+<textarea readonly rows="20" id="chatbox" ></textarea><br/><br/>
+<div>Enter Question:</div>
+<textarea id="questionBox"  onkeypress="query(event,this)"></textarea>
+</div></center>
+</body>
