@@ -10,6 +10,8 @@ var QA = {
 	      	processRequest:function (user,userQuestion,callback)
 	      	{
 	      		userQuestion = userQuestion.replace(/\n/g, '')
+	      		userQuestion = userQuestion.toLowerCase();
+
 	      		var data = {}
 	      		searchAnswers(user, userQuestion, function(response)
 	      		{
@@ -25,6 +27,7 @@ var QA = {
 	      				/*case 1: Direct match */
 	      				source = response.hits.hits[0]['_source']
 	      				firstQuestion = source['question']
+	      				firstQuestion = firstQuestion.toLowerCase
 	      				if(firstQuestion==userQuestion)
 	      				{
 	      					answers.push(source['answer'])
